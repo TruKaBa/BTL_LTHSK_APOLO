@@ -16,5 +16,15 @@ namespace BTL_LTHSK
         {
             InitializeComponent();
         }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void khoaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -49,6 +49,7 @@ namespace BTL_LTHSK
                         {
                             MessageBox.Show("Tên đăng nhập hoặc mật khẩu sai", "Thông báo");
                             clearTextBox();
+                            tbUserName.Focus();
 
                         } else
                         {
