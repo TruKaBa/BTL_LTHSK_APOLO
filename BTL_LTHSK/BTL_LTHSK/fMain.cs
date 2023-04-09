@@ -22,9 +22,12 @@ namespace BTL_LTHSK
             this.Hide();
         }
 
-        private void khoaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void lophcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            fClass fClass = new fClass();
+            this.Hide();
+            fClass.ShowDialog();
+            this.Show();
         }
     }
 }
