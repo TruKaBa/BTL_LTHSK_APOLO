@@ -29,16 +29,20 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.tbTeacherID = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbTeacherName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.rdFemale = new System.Windows.Forms.RadioButton();
+            this.rdMale = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.cbDepartment = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -47,21 +51,17 @@
             this.btnChange = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvTeacher = new System.Windows.Forms.DataGridView();
+            this.sMaGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sTenGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sGioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sMaKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.báoCáoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.báoCáoChiTiếtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.báoCáoBảngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.giớiTínhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.khoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rdMale = new System.Windows.Forms.RadioButton();
-            this.rdFemale = new System.Windows.Forms.RadioButton();
-            this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
-            this.cbDepartment = new System.Windows.Forms.ComboBox();
-            this.sMaGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sTenGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sGioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sMaKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -81,6 +81,14 @@
             this.panel1.Size = new System.Drawing.Size(584, 48);
             this.panel1.TabIndex = 0;
             // 
+            // tbTeacherID
+            // 
+            this.tbTeacherID.Location = new System.Drawing.Point(198, 14);
+            this.tbTeacherID.Name = "tbTeacherID";
+            this.tbTeacherID.Size = new System.Drawing.Size(355, 22);
+            this.tbTeacherID.TabIndex = 1;
+            this.tbTeacherID.TextChanged += new System.EventHandler(this.tbTeacherID_TextChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -90,14 +98,6 @@
             this.label1.Size = new System.Drawing.Size(117, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã giảng viên:";
-            // 
-            // tbTeacherID
-            // 
-            this.tbTeacherID.Location = new System.Drawing.Point(198, 14);
-            this.tbTeacherID.Name = "tbTeacherID";
-            this.tbTeacherID.Size = new System.Drawing.Size(355, 22);
-            this.tbTeacherID.TabIndex = 1;
-            this.tbTeacherID.TextChanged += new System.EventHandler(this.tbTeacherID_TextChanged);
             // 
             // panel2
             // 
@@ -136,6 +136,26 @@
             this.panel3.Size = new System.Drawing.Size(584, 48);
             this.panel3.TabIndex = 2;
             // 
+            // rdFemale
+            // 
+            this.rdFemale.AutoSize = true;
+            this.rdFemale.Location = new System.Drawing.Point(276, 15);
+            this.rdFemale.Name = "rdFemale";
+            this.rdFemale.Size = new System.Drawing.Size(45, 20);
+            this.rdFemale.TabIndex = 2;
+            this.rdFemale.Text = "Nữ";
+            this.rdFemale.UseVisualStyleBackColor = true;
+            // 
+            // rdMale
+            // 
+            this.rdMale.AutoSize = true;
+            this.rdMale.Location = new System.Drawing.Point(198, 14);
+            this.rdMale.Name = "rdMale";
+            this.rdMale.Size = new System.Drawing.Size(57, 20);
+            this.rdMale.TabIndex = 1;
+            this.rdMale.Text = "Nam";
+            this.rdMale.UseVisualStyleBackColor = true;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -155,6 +175,14 @@
             this.panel4.Size = new System.Drawing.Size(584, 48);
             this.panel4.TabIndex = 3;
             // 
+            // dtpDateOfBirth
+            // 
+            this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(198, 14);
+            this.dtpDateOfBirth.Name = "dtpDateOfBirth";
+            this.dtpDateOfBirth.Size = new System.Drawing.Size(200, 22);
+            this.dtpDateOfBirth.TabIndex = 1;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -173,6 +201,14 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(584, 48);
             this.panel5.TabIndex = 4;
+            // 
+            // cbDepartment
+            // 
+            this.cbDepartment.FormattingEnabled = true;
+            this.cbDepartment.Location = new System.Drawing.Point(198, 14);
+            this.cbDepartment.Name = "cbDepartment";
+            this.cbDepartment.Size = new System.Drawing.Size(200, 24);
+            this.cbDepartment.TabIndex = 1;
             // 
             // label5
             // 
@@ -264,89 +300,6 @@
             this.dgvTeacher.TabIndex = 8;
             this.dgvTeacher.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeacher_CellClick);
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.báoCáoToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(831, 28);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // báoCáoToolStripMenuItem
-            // 
-            this.báoCáoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.báoCáoChiTiếtToolStripMenuItem,
-            this.báoCáoBảngKêToolStripMenuItem});
-            this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
-            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
-            this.báoCáoToolStripMenuItem.Text = "Báo cáo";
-            // 
-            // báoCáoChiTiếtToolStripMenuItem
-            // 
-            this.báoCáoChiTiếtToolStripMenuItem.Name = "báoCáoChiTiếtToolStripMenuItem";
-            this.báoCáoChiTiếtToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.báoCáoChiTiếtToolStripMenuItem.Text = "Báo cáo chi tiết";
-            // 
-            // báoCáoBảngKêToolStripMenuItem
-            // 
-            this.báoCáoBảngKêToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.giớiTínhToolStripMenuItem,
-            this.khoaToolStripMenuItem});
-            this.báoCáoBảngKêToolStripMenuItem.Name = "báoCáoBảngKêToolStripMenuItem";
-            this.báoCáoBảngKêToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.báoCáoBảngKêToolStripMenuItem.Text = "Báo cáo bảng kê";
-            // 
-            // giớiTínhToolStripMenuItem
-            // 
-            this.giớiTínhToolStripMenuItem.Name = "giớiTínhToolStripMenuItem";
-            this.giớiTínhToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.giớiTínhToolStripMenuItem.Text = "Giới tính";
-            // 
-            // khoaToolStripMenuItem
-            // 
-            this.khoaToolStripMenuItem.Name = "khoaToolStripMenuItem";
-            this.khoaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.khoaToolStripMenuItem.Text = "Khoa";
-            // 
-            // rdMale
-            // 
-            this.rdMale.AutoSize = true;
-            this.rdMale.Location = new System.Drawing.Point(198, 14);
-            this.rdMale.Name = "rdMale";
-            this.rdMale.Size = new System.Drawing.Size(57, 20);
-            this.rdMale.TabIndex = 1;
-            this.rdMale.Text = "Nam";
-            this.rdMale.UseVisualStyleBackColor = true;
-            // 
-            // rdFemale
-            // 
-            this.rdFemale.AutoSize = true;
-            this.rdFemale.Location = new System.Drawing.Point(276, 15);
-            this.rdFemale.Name = "rdFemale";
-            this.rdFemale.Size = new System.Drawing.Size(45, 20);
-            this.rdFemale.TabIndex = 2;
-            this.rdFemale.Text = "Nữ";
-            this.rdFemale.UseVisualStyleBackColor = true;
-            // 
-            // dtpDateOfBirth
-            // 
-            this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(198, 14);
-            this.dtpDateOfBirth.Name = "dtpDateOfBirth";
-            this.dtpDateOfBirth.Size = new System.Drawing.Size(200, 22);
-            this.dtpDateOfBirth.TabIndex = 1;
-            // 
-            // cbDepartment
-            // 
-            this.cbDepartment.FormattingEnabled = true;
-            this.cbDepartment.Location = new System.Drawing.Point(198, 14);
-            this.cbDepartment.Name = "cbDepartment";
-            this.cbDepartment.Size = new System.Drawing.Size(200, 24);
-            this.cbDepartment.TabIndex = 1;
-            // 
             // sMaGV
             // 
             this.sMaGV.DataPropertyName = "sMaGV";
@@ -381,6 +334,56 @@
             this.sMaKhoa.HeaderText = "Mã khoa";
             this.sMaKhoa.MinimumWidth = 6;
             this.sMaKhoa.Name = "sMaKhoa";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.báoCáoToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(831, 28);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // báoCáoToolStripMenuItem
+            // 
+            this.báoCáoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.báoCáoChiTiếtToolStripMenuItem,
+            this.báoCáoBảngKêToolStripMenuItem});
+            this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
+            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
+            this.báoCáoToolStripMenuItem.Text = "Báo cáo";
+            // 
+            // báoCáoChiTiếtToolStripMenuItem
+            // 
+            this.báoCáoChiTiếtToolStripMenuItem.Name = "báoCáoChiTiếtToolStripMenuItem";
+            this.báoCáoChiTiếtToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.báoCáoChiTiếtToolStripMenuItem.Text = "Báo cáo chi tiết";
+            this.báoCáoChiTiếtToolStripMenuItem.Click += new System.EventHandler(this.báoCáoChiTiếtToolStripMenuItem_Click);
+            // 
+            // báoCáoBảngKêToolStripMenuItem
+            // 
+            this.báoCáoBảngKêToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.giớiTínhToolStripMenuItem,
+            this.khoaToolStripMenuItem});
+            this.báoCáoBảngKêToolStripMenuItem.Name = "báoCáoBảngKêToolStripMenuItem";
+            this.báoCáoBảngKêToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.báoCáoBảngKêToolStripMenuItem.Text = "Báo cáo bảng kê";
+            // 
+            // giớiTínhToolStripMenuItem
+            // 
+            this.giớiTínhToolStripMenuItem.Name = "giớiTínhToolStripMenuItem";
+            this.giớiTínhToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.giớiTínhToolStripMenuItem.Text = "Giới tính";
+            this.giớiTínhToolStripMenuItem.Click += new System.EventHandler(this.giớiTínhToolStripMenuItem_Click);
+            // 
+            // khoaToolStripMenuItem
+            // 
+            this.khoaToolStripMenuItem.Name = "khoaToolStripMenuItem";
+            this.khoaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.khoaToolStripMenuItem.Text = "Khoa";
+            this.khoaToolStripMenuItem.Click += new System.EventHandler(this.khoaToolStripMenuItem_Click);
             // 
             // fTeacher
             // 

@@ -405,5 +405,44 @@ namespace BTL_LTHSK
             }
             loadDataToGridView(filter);
         }
+
+        private void báoCáoChiTiếtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string teacherId = tbTeacherID.Text;
+                if (isTeacherIDExist(teacherId))
+                {
+                    fReport report = new fReport();
+                    report.Show();
+                    report.showTeacherDetailReport(teacherId);
+
+                }
+                else
+                {
+                    MessageBox.Show("Không tồn tại giảng viên!", "Thông báo");
+                    clearInputControl();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void giớiTínhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fReport fReport =new fReport();
+            fReport.Show();
+            fReport.showTeacherGroupForGender();
+        }
+
+        private void khoaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fReport fReport = new fReport();
+            fReport.Show();
+            fReport.showTeacherGroupForDepartment();
+        }
     }
 }

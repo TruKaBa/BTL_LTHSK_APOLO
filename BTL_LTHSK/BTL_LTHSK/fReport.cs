@@ -97,5 +97,113 @@ namespace BTL_LTHSK
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public void showTeacherDetailReport(string teacherId)
+        {
+            try
+            {
+                string query = "Proc_ChiTietGiangVien";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        command.CommandText = query;
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("@magv", teacherId);
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            using (DataTable dtResult = new DataTable())
+                            {
+                                adapter.Fill(dtResult);
+                                ReportDocument reportDocument = new ReportDocument();
+
+                                string path = string.Format("{0}\\Reports\\fTeacherReports\\TeacherDetail.rpt", Application.StartupPath);
+                                reportDocument.Load(path);
+                                reportDocument.Database.Tables[query].SetDataSource(dtResult);
+
+                                crystalReportView.ReportSource = reportDocument;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void showTeacherGroupForGender()
+        {
+            try
+            {
+                string query = "Proc_ThongKeGiangVien";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        command.CommandText = query;
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            using (DataTable dtResult = new DataTable())
+                            {
+                                adapter.Fill(dtResult);
+                                ReportDocument reportDocument = new ReportDocument();
+
+                                string path = string.Format("{0}\\Reports\\fTeacherReports\\TeacherGroupForGender.rpt", Application.StartupPath);
+                                reportDocument.Load(path);
+                                reportDocument.Database.Tables[query].SetDataSource(dtResult);
+
+                                crystalReportView.ReportSource = reportDocument;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void showTeacherGroupForDepartment()
+        {
+            try
+            {
+                string query = "Proc_ThongKeGiangVien";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        command.CommandText = query;
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            using (DataTable dtResult = new DataTable())
+                            {
+                                adapter.Fill(dtResult);
+                                ReportDocument reportDocument = new ReportDocument();
+
+                                string path = string.Format("{0}\\Reports\\fTeacherReports\\TeacherGroupForDepartment.rpt", Application.StartupPath);
+                                reportDocument.Load(path);
+                                reportDocument.Database.Tables[query].SetDataSource(dtResult);
+
+                                crystalReportView.ReportSource = reportDocument;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
