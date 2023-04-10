@@ -77,6 +77,12 @@
     <Compile Include="fReport.Designer.cs">
       <DependentUpon>fReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="fSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fSubject.Designer.cs">
+      <DependentUpon>fSubject.cs</DependentUpon>
+    </Compile>
     <Compile Include="fTeacher.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fReport.resx">
       <DependentUpon>fReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fSubject.resx">
+      <DependentUpon>fSubject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fTeacher.resx">
       <DependentUpon>fTeacher.cs</DependentUpon>
