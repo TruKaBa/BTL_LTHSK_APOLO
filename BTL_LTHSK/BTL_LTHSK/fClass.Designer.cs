@@ -87,14 +87,14 @@
             // báoCáoĐơnToolStripMenuItem
             // 
             this.báoCáoĐơnToolStripMenuItem.Name = "báoCáoĐơnToolStripMenuItem";
-            this.báoCáoĐơnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.báoCáoĐơnToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.báoCáoĐơnToolStripMenuItem.Text = "Báo cáo chi tiết";
             this.báoCáoĐơnToolStripMenuItem.Click += new System.EventHandler(this.báoCáoĐơnToolStripMenuItem_Click);
             // 
             // báoCáoThốngKêToolStripMenuItem
             // 
             this.báoCáoThốngKêToolStripMenuItem.Name = "báoCáoThốngKêToolStripMenuItem";
-            this.báoCáoThốngKêToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.báoCáoThốngKêToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.báoCáoThốngKêToolStripMenuItem.Text = "Báo cáo thống kê";
             this.báoCáoThốngKêToolStripMenuItem.Click += new System.EventHandler(this.báoCáoThốngKêToolStripMenuItem_Click);
             // 

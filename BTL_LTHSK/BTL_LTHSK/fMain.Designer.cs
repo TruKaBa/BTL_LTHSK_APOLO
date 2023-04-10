@@ -36,6 +36,7 @@
             this.lophcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sinhViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mônHọcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.giảngViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,7 +82,8 @@
             this.đốiTượngQuảnLýToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lophcToolStripMenuItem,
             this.sinhViênToolStripMenuItem,
-            this.mônHọcToolStripMenuItem});
+            this.mônHọcToolStripMenuItem,
+            this.giảngViênToolStripMenuItem});
             this.đốiTượngQuảnLýToolStripMenuItem.Name = "đốiTượngQuảnLýToolStripMenuItem";
             this.đốiTượngQuảnLýToolStripMenuItem.Size = new System.Drawing.Size(143, 24);
             this.đốiTượngQuảnLýToolStripMenuItem.Text = "Đối tượng quản lý";
@@ -104,6 +106,13 @@
             this.mônHọcToolStripMenuItem.Name = "mônHọcToolStripMenuItem";
             this.mônHọcToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.mônHọcToolStripMenuItem.Text = "Môn học";
+            // 
+            // giảngViênToolStripMenuItem
+            // 
+            this.giảngViênToolStripMenuItem.Name = "giảngViênToolStripMenuItem";
+            this.giảngViênToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.giảngViênToolStripMenuItem.Text = "Giảng viên";
+            this.giảngViênToolStripMenuItem.Click += new System.EventHandler(this.giảngViênToolStripMenuItem_Click);
             // 
             // fMain
             // 
@@ -133,5 +142,6 @@
         private System.Windows.Forms.ToolStripMenuItem lophcToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sinhViênToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mônHọcToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem giảngViênToolStripMenuItem;
     }
 }

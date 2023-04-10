@@ -29,5 +29,13 @@ namespace BTL_LTHSK
             fClass.ShowDialog();
             this.Show();
         }
+
+        private void giảngViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fTeacher fTeacher = new fTeacher();
+            this.Hide();
+            fTeacher.ShowDialog();
+            this.Show();
+        }
     }
 }
