@@ -15,6 +15,7 @@ namespace BTL_LTHSK
     {
         private string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["connectString"].ConnectionString;
         private DataView dataView = new DataView();
+
         public fClass()
         {
             InitializeComponent();
@@ -260,6 +261,7 @@ namespace BTL_LTHSK
         private void btnCancel_Click(object sender, EventArgs e)
         {
             clearInputControl();
+            toggleDisableButton();
             loadDataToGridView();
         }
 
