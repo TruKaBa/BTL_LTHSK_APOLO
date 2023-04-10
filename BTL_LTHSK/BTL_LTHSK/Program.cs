@@ -16,7 +16,7 @@ namespace BTL_LTHSK
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new fSubject());
+            Application.Run(new fStudent());
         }
     }
 }
