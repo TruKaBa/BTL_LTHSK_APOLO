@@ -205,5 +205,113 @@ namespace BTL_LTHSK
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public void showSubjectDetail(string subjectId)
+        {
+            try
+            {
+                string query = "Proc_ChiTietMonHoc";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        command.CommandText = query;
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("@mamon", subjectId);
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            using (DataTable dtResult = new DataTable())
+                            {
+                                adapter.Fill(dtResult);
+                                ReportDocument reportDocument = new ReportDocument();
+
+                                string path = string.Format("{0}\\Reports\\fSubjectReports\\SubjectDetail.rpt", Application.StartupPath);
+                                reportDocument.Load(path);
+                                reportDocument.Database.Tables[query].SetDataSource(dtResult);
+
+                                crystalReportView.ReportSource = reportDocument;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void showSubjectGroupForCredits()
+        {
+            try
+            {
+                string query = "Proc_ThongKeMonHoc";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        command.CommandText = query;
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            using (DataTable dtResult = new DataTable())
+                            {
+                                adapter.Fill(dtResult);
+                                ReportDocument reportDocument = new ReportDocument();
+
+                                string path = string.Format("{0}\\Reports\\fSubjectReports\\SubjectGroupForCredits.rpt", Application.StartupPath);
+                                reportDocument.Load(path);
+                                reportDocument.Database.Tables[query].SetDataSource(dtResult);
+
+                                crystalReportView.ReportSource = reportDocument;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void showSubjectGroupForDepartment()
+        {
+            try
+            {
+                string query = "Proc_ThongKeMonHoc";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        command.CommandText = query;
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            using (DataTable dtResult = new DataTable())
+                            {
+                                adapter.Fill(dtResult);
+                                ReportDocument reportDocument = new ReportDocument();
+
+                                string path = string.Format("{0}\\Reports\\fSubjectReports\\SubjectGroupForDepartment.rpt", Application.StartupPath);
+                                reportDocument.Load(path);
+                                reportDocument.Database.Tables[query].SetDataSource(dtResult);
+
+                                crystalReportView.ReportSource = reportDocument;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
