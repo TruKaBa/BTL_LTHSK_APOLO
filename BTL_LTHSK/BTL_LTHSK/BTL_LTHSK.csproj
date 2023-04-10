@@ -95,6 +95,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QUANLYGIANGDAYDataSet11.xsd</DependentUpon>
     </Compile>
+    <Compile Include="QUANLYGIANGDAYDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUANLYGIANGDAYDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QUANLYGIANGDAYDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUANLYGIANGDAYDataSet3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\fClassReports\DetailReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,6 +115,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GroupReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\fTeacherReports\TeacherDetail.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeacherDetail.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\fTeacherReports\TeacherGroupForGender.cs">
+      <DependentUpon>TeacherGroupForGender.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\fTeacherReports\TeacherGroupForDepartment.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeacherGroupForDepartment.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="fClass.resx">
@@ -139,6 +167,18 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>GroupReport.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\fTeacherReports\TeacherDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TeacherDetail.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\fTeacherReports\TeacherGroupForGender.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TeacherGroupForGender.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\fTeacherReports\TeacherGroupForDepartment.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TeacherGroupForDepartment.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -169,6 +209,28 @@
     </None>
     <None Include="QUANLYGIANGDAYDataSet11.xss">
       <DependentUpon>QUANLYGIANGDAYDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet2.xsc">
+      <DependentUpon>QUANLYGIANGDAYDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QUANLYGIANGDAYDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet2.xss">
+      <DependentUpon>QUANLYGIANGDAYDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet3.xsc">
+      <DependentUpon>QUANLYGIANGDAYDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QUANLYGIANGDAYDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet3.xss">
+      <DependentUpon>QUANLYGIANGDAYDataSet3.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
