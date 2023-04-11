@@ -11,27 +11,27 @@ using System.Windows.Forms;
 
 namespace BTL_LTHSK
 {
-    public partial class fSubject : Form
+    public partial class fStudent : Form
     {
         private string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["connectString"].ConnectionString;
         private ErrorProvider errorProvider = new ErrorProvider();
         private DataView dataView = new DataView();
 
-        public fSubject()
+        public fStudent()
         {
             InitializeComponent();
         }
 
-        private void fSubject_Load(object sender, EventArgs e)
+        private void fStudent_Load(object sender, EventArgs e)
         {
             toggleDisableButton();
-            loadDataToComboBoxDepartment();
+            loadDataToComboBoxClass();
             loadDataToGridView();
         }
 
-        private void tbSubjectID_TextChanged(object sender, EventArgs e)
+        private void tbStudentID_TextChanged(object sender, EventArgs e)
         {
-            if (tbSubjectID.Text.Length > 0)
+            if (tbStudentID.Text.Length > 0)
             {
                 toggleDisableButton(true, true, true, true, true);
             }
@@ -50,58 +50,67 @@ namespace BTL_LTHSK
             btnCancel.Enabled = cancelButton;
         }
 
-        private void tbSubjectName_TextChanged(object sender, EventArgs e)
+        private bool hasNumberInName(string studentName)
         {
-            if (hasNumberInName(tbSubjectName.Text))
+            bool result = studentName.Any(char.IsDigit);
+            return result;
+        }
+
+        private bool hasLetterInPhoneNumber(string phoneNumber)
+        {
+            bool result = phoneNumber.Any(char.IsLetter);
+            return result;
+        }
+
+        private void tbStudentName_TextChanged(object sender, EventArgs e)
+        {
+            if (hasNumberInName(tbStudentName.Text))
             {
-                errorProvider.SetError(tbSubjectName, "Tên không được chứa chữ số");
+                errorProvider.SetError(tbStudentName, "Tên sinh viên không được chứa chữ số");
                 toggleDisableButton(cancelButton: true);
 
             }
             else
             {
-                errorProvider.SetError(tbSubjectName, null);
+                errorProvider.SetError(tbStudentName, null);
             }
         }
 
-        private bool hasNumberInName(string subjectName)
+        private void tbStudentPhoneNumber_TextChanged(object sender, EventArgs e)
         {
-            bool result = subjectName.Any(char.IsDigit);
-            return result;
-        }
-
-        private int numberOfCreidts()
-        {
-            int result = 3;
-            if (rdFourCredits.Checked)
+            if (hasLetterInPhoneNumber(tbStudentPhoneNumber.Text))
             {
-                result = 4;
-                return result;
+                errorProvider.SetError(tbStudentPhoneNumber, "SDT không được chứa chữ cái");
+              
+
             }
-            return result;
+            else
+            {
+                errorProvider.SetError(tbStudentPhoneNumber, null);
+            }
         }
 
-        private void loadDataToComboBoxDepartment()
+        private void loadDataToComboBoxClass()
         {
             try
             {
-                string proc = "selectKhoa";
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                string proc = "Proc_SelectAlltblLopHC";
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    using (SqlCommand command = conn.CreateCommand())
+                    using (SqlCommand command = connection.CreateCommand())
                     {
                         command.CommandText = proc;
                         command.CommandType = CommandType.StoredProcedure;
                         using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
-                            using (DataTable dtDepartment = new DataTable())
+                            using (DataTable dtClass = new DataTable())
                             {
-                                adapter.Fill(dtDepartment);
-                                if (dtDepartment.Rows.Count > 0)
+                                adapter.Fill(dtClass);
+                                if (dtClass.Rows.Count > 0)
                                 {
-                                    foreach (DataRow row in dtDepartment.Rows)
+                                    foreach (DataRow row in dtClass.Rows)
                                     {
-                                        cbDepartment.Items.Add(row["sMaKhoa"]);
+                                        cbClass.Items.Add(row["sMaLop"]);
                                     }
                                 }
                                 else
@@ -123,7 +132,7 @@ namespace BTL_LTHSK
         {
             try
             {
-                string query = "Proc_SelectAlltblMonHoc";
+                string query = "Proc_SelectAlltblSinhVien";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     using (SqlCommand command = connection.CreateCommand())
@@ -141,11 +150,16 @@ namespace BTL_LTHSK
                                 {
                                     dataView = table.DefaultView;
 
-                                    dgvSubject.DataSource = dataView;
-                                    dgvSubject.Columns["sMaMon"].ReadOnly = true;
-                                    dgvSubject.Columns["sTenMon"].ReadOnly = true;
-                                    dgvSubject.Columns["iSoTC"].ReadOnly = true;
-                                    dgvSubject.Columns["sMaKhoa"].ReadOnly = true;
+                                    dgvStudent.DataSource = dataView;
+                                    dgvStudent.AutoGenerateColumns = false;
+
+                                    dgvStudent.Columns["sMaSV"].ReadOnly = true;
+                                    dgvStudent.Columns["sTenSV"].ReadOnly = true;
+                                    dgvStudent.Columns["sGioiTinh"].ReadOnly = true;
+                                    dgvStudent.Columns["dNgaySinh"].ReadOnly = true;
+                                    dgvStudent.Columns["sDiaChi"].ReadOnly = true;
+                                    dgvStudent.Columns["sSDT"].ReadOnly = true;
+                                    dgvStudent.Columns["sLopHC"].ReadOnly = true;
 
                                     if (!string.IsNullOrEmpty(filter)) dataView.RowFilter = filter;
                                 }
@@ -160,37 +174,56 @@ namespace BTL_LTHSK
             }
         }
 
-        private void dgvSubject_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvStudent_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int defaultCredits = 3;
-            int index = dgvSubject.CurrentRow.Index;
-            tbSubjectID.Text = dataView[index]["sMaMon"].ToString();
-            tbSubjectName.Text = dataView[index]["sTenMon"].ToString();
+            int index = dgvStudent.CurrentRow.Index;
+            tbStudentID.Text = dataView[index]["sMaSV"].ToString();
+            tbStudentName.Text = dataView[index]["sTenSV"].ToString();
 
-            if (Int32.Parse(dataView[index]["iSoTC"].ToString()) == defaultCredits)
+            if (isMale(dataView[index]["sGioiTinh"].ToString()))
             {
-                rdThreeCredits.Checked = true;
+                rdMale.Checked = true;
             }
             else
             {
-                rdFourCredits.Checked = true;
+                rdFemale.Checked = true;
             }
-            cbDepartment.Text = dataView[index]["sMaKhoa"].ToString();
+            DateTime dateOfBirth = formatDateOfBirth(dataView[index]["dNgaySinh"].ToString());
+            dtpDateOfBirth.Value = dateOfBirth;
+            tbStudentAddress.Text = dataView[index]["sDiaChi"].ToString();
+            tbStudentPhoneNumber.Text = dataView[index]["sSDT"].ToString();
+            cbClass.Text = dataView[index]["sLopHC"].ToString();
 
-            tbSubjectID.ReadOnly = true;
+            tbStudentID.ReadOnly = true;
             toggleDisableButton(changeButton: true, deleteButton: true, searchButton: true, cancelButton: true);
+        }
+
+        private bool isMale(string gender)
+        {
+            if (gender == "Nam")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private DateTime formatDateOfBirth(string dateOfBirth)
+        {
+            DateTime result = Convert.ToDateTime(dateOfBirth);
+            return result;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                string subjectId = tbSubjectID.Text;
-                int numberOfCredit = numberOfCreidts();
+                string studentId = tbStudentID.Text;
+                string gender = genderOfStudent();
+               
 
-                if (!isSubjectIDExist(subjectId))
+                if (!isStudentIDExist(studentId))
                 {
-                    string query = "Proc_ChenThemMonHoc";
+                    string query = "Proc_ChenThemSinhVien";
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
                         using (SqlCommand command = connection.CreateCommand())
@@ -199,16 +232,19 @@ namespace BTL_LTHSK
                             command.CommandType = CommandType.StoredProcedure;
 
                             command.Parameters.Clear();
-                            command.Parameters.AddWithValue("@mamon", tbSubjectID.Text);
-                            command.Parameters.AddWithValue("@tenmon", tbSubjectName.Text);
-                            command.Parameters.AddWithValue("@makhoa", cbDepartment.Text);
-                            command.Parameters.AddWithValue("@sotinchi", numberOfCredit);
+                            command.Parameters.AddWithValue("@masv", tbStudentID.Text);
+                            command.Parameters.AddWithValue("@tensv", tbStudentName.Text);
+                            command.Parameters.AddWithValue("@gioitinh", gender);
+                            command.Parameters.AddWithValue("@ngaysinh", dtpDateOfBirth.Text);
+                            command.Parameters.AddWithValue("@diachi", tbStudentAddress.Text);
+                            command.Parameters.AddWithValue("@sdt", tbStudentPhoneNumber.Text);
+                            command.Parameters.AddWithValue("@malop", cbClass.Text);
 
                             connection.Open();
                             command.ExecuteNonQuery();
                             connection.Close();
 
-                            MessageBox.Show("Thêm mới môn học thành công", "Thông báo");
+                            MessageBox.Show("Thêm mới sinh viên thành công", "Thông báo");
                             clearInputControl();
                             loadDataToGridView();
                         }
@@ -216,7 +252,7 @@ namespace BTL_LTHSK
                 }
                 else
                 {
-                    MessageBox.Show("Môn học đã tồn tại trong hệ thống", "Thông báo");
+                    MessageBox.Show("Sinh viên đã tồn tại trong hệ thống", "Thông báo");
                 }
 
             }
@@ -226,9 +262,9 @@ namespace BTL_LTHSK
             }
         }
 
-        private bool isSubjectIDExist(string subjectId)
+        private bool isStudentIDExist(string studentId)
         {
-            string query = "Proc_KiemTraMonHoc";
+            string query = "Proc_KiemTraSinhVien";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
@@ -236,7 +272,7 @@ namespace BTL_LTHSK
                     command.CommandText = query;
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.Clear();
-                    command.Parameters.AddWithValue("@mamon", subjectId);
+                    command.Parameters.AddWithValue("@masv", studentId);
 
                     connection.Open();
                     var result = command.ExecuteScalar();
@@ -254,13 +290,27 @@ namespace BTL_LTHSK
 
         private void clearInputControl()
         {
-            tbSubjectID.Text = String.Empty;
-            tbSubjectName.Text = String.Empty;
-            rdThreeCredits.Checked = true;
-            cbDepartment.ResetText();
+            tbStudentID.Text = String.Empty;
+            tbStudentName.Text = String.Empty;
+            rdMale.Checked = true;
+            dtpDateOfBirth.Value = DateTime.Today;
+            tbStudentAddress.Text = String.Empty;
+            tbStudentPhoneNumber.Text = String.Empty;
+            cbClass.ResetText();
             toggleDisableButton();
-            tbSubjectID.ReadOnly = false;
-            tbSubjectID.Focus();
+            tbStudentID.ReadOnly = false;
+            tbStudentID.Focus();
+        }
+
+        private string genderOfStudent()
+        {
+            string result = "Nữ";
+            if (rdMale.Checked)
+            {
+                result = "Nam";
+                return result;
+            }
+            return result;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -274,11 +324,11 @@ namespace BTL_LTHSK
         {
             try
             {
-                string subjectId = tbSubjectID.Text;
-                if (isSubjectIDExist(subjectId))
+                string studentId = tbStudentID.Text;
+                if (isStudentIDExist(studentId))
                 {
-                    string query = "Select * From tblMonHoc";
-                    int numberOfCredit = numberOfCreidts();
+                    string query = "Select * From tblSinhVien";
+                    string gender = genderOfStudent();
 
 
                     using (SqlConnection connection = new SqlConnection(connectionString))
@@ -290,33 +340,38 @@ namespace BTL_LTHSK
 
                             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                             {
-                                using (DataTable dtSubject = new DataTable("tblMonHoc"))
+                                using (DataTable dtStudent = new DataTable("tblSinhVien"))
                                 {
-                                    adapter.Fill(dtSubject);
+                                    adapter.Fill(dtStudent);
                                     using (DataSet dataSet = new DataSet())
                                     {
-                                        dataSet.Tables.Add(dtSubject);
-                                        dtSubject.PrimaryKey = new DataColumn[] { dtSubject.Columns["sMaMon"] };
+                                        dataSet.Tables.Add(dtStudent);
+                                        dtStudent.PrimaryKey = new DataColumn[] { dtStudent.Columns["sMaSV"] };
 
-                                        DataRow newRow = dtSubject.Rows.Find(tbSubjectID.Text);
-                                        newRow["sMaMon"] = tbSubjectID.Text;
-                                        newRow["sMaKhoa"] = cbDepartment.Text;
-                                        newRow["sTenMon"] = tbSubjectName.Text;
-                                        newRow["iSoTC"] = numberOfCredit;
-                                        
+                                        DataRow newRow = dtStudent.Rows.Find(tbStudentID.Text);
+                                        newRow["sMaSV"] = tbStudentID.Text;
+                                        newRow["sTenSV"] = tbStudentName.Text;
+                                        newRow["sGioiTinh"] = gender;
+                                        newRow["dNgaySinh"] = dtpDateOfBirth.Text;
+                                        newRow["sDiaChi"] = tbStudentAddress.Text;
+                                        newRow["sSDT"] = tbStudentPhoneNumber.Text;
+                                        newRow["sLopHC"] = cbClass.Text;
 
-                                        query = "Proc_CapNhattblMonHoc";
+                                        query = "Proc_CapNhattblSinhVien";
                                         command.CommandText = query;
                                         command.CommandType = CommandType.StoredProcedure;
 
                                         command.Parameters.Clear();
-                                        command.Parameters.AddWithValue("@mamon", tbSubjectID.Text);
-                                        command.Parameters.AddWithValue("@tenmon", tbSubjectName.Text);
-                                        command.Parameters.AddWithValue("@makhoa", cbDepartment.Text);
-                                        command.Parameters.AddWithValue("@sotinchi", numberOfCredit);
+                                        command.Parameters.AddWithValue("@masv", tbStudentID.Text);
+                                        command.Parameters.AddWithValue("@tensv", tbStudentName.Text);
+                                        command.Parameters.AddWithValue("@gioitinh", gender);
+                                        command.Parameters.AddWithValue("@ngaysinh", dtpDateOfBirth.Text);
+                                        command.Parameters.AddWithValue("@diachi", tbStudentAddress.Text);
+                                        command.Parameters.AddWithValue("@sdt", tbStudentPhoneNumber.Text);
+                                        command.Parameters.AddWithValue("@malop", cbClass.Text);
 
                                         adapter.UpdateCommand = command;
-                                        adapter.Update(dataSet, "tblMonHoc");
+                                        adapter.Update(dataSet, "tblSinhVien");
                                         MessageBox.Show("Cập nhật thông tin thành công", "Thông báo");
                                         clearInputControl();
                                         loadDataToGridView();
@@ -329,7 +384,7 @@ namespace BTL_LTHSK
                 }
                 else
                 {
-                    MessageBox.Show("Không tồn tại môn học cần sửa trong hệ thống", "Thông báo");
+                    MessageBox.Show("Không tồn tại sinh viên cần sửa trong hệ thống", "Thông báo");
                 }
 
             }
@@ -343,10 +398,10 @@ namespace BTL_LTHSK
         {
             try
             {
-                string subjectId = tbSubjectID.Text;
-                if (isSubjectIDExist(subjectId))
+                string studentId = tbStudentID.Text;
+                if (isStudentIDExist(studentId))
                 {
-                    string query = "Proc_XoaMonHocVaCapNhatMonHocChoSinhVien";
+                    string query = "Proc_XoaSinhVien";
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
                         using (SqlCommand command = connection.CreateCommand())
@@ -354,13 +409,13 @@ namespace BTL_LTHSK
                             command.CommandText = query;
                             command.CommandType = CommandType.StoredProcedure;
                             command.Parameters.Clear();
-                            command.Parameters.AddWithValue("@mamon", tbSubjectID.Text);
+                            command.Parameters.AddWithValue("@masv", tbStudentID.Text);
 
                             connection.Open();
                             command.ExecuteNonQuery();
                             connection.Close();
 
-                            MessageBox.Show("Xoá thành công môn học có mã " + subjectId, "Thông báo");
+                            MessageBox.Show("Xoá thành công sinh viên có mã " + studentId, "Thông báo");
                             loadDataToGridView();
                             clearInputControl();
                         }
@@ -368,7 +423,7 @@ namespace BTL_LTHSK
                 }
                 else
                 {
-                    MessageBox.Show("Không tồn tại môn học cần xoá trong hệ thống", "Thông báo");
+                    MessageBox.Show("Không tồn tại sinh viên cần xoá trong hệ thống", "Thông báo");
                 }
 
             }
@@ -380,29 +435,29 @@ namespace BTL_LTHSK
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string filter = "sMaMon IS NOT NULL";
-            if (!string.IsNullOrEmpty(tbSubjectID.Text))
+            string filter = "sMaSV IS NOT NULL";
+            if (!string.IsNullOrEmpty(tbStudentID.Text))
             {
-                filter += string.Format(" AND sMaMon LIKE '{0}'", tbSubjectID.Text);
+                filter += string.Format(" AND sMaSV LIKE '{0}'", tbStudentID.Text);
             }
             loadDataToGridView(filter);
         }
 
-        private void báoCáoĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        private void báoCáoChiTiếtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                string subjectId = tbSubjectID.Text;
-                if (isSubjectIDExist(subjectId))
+                string studentId = tbStudentID.Text;
+                if (isStudentIDExist(studentId))
                 {
                     fReport report = new fReport();
                     report.Show();
-                    report.showSubjectDetail(subjectId);
+                    report.showStudentDetail(studentId);
 
                 }
                 else
                 {
-                    MessageBox.Show("Không tồn tại môn học!", "Thông báo");
+                    MessageBox.Show("Không tồn tại sinh viên!", "Thông báo");
                     clearInputControl();
                 }
 
@@ -413,18 +468,18 @@ namespace BTL_LTHSK
             }
         }
 
-        private void theoSốTínChỉToolStripMenuItem_Click(object sender, EventArgs e)
+        private void báoCáoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             fReport fReport = new fReport();
             fReport.Show();
-            fReport.showSubjectGroupForCredits();
+            fReport.showStudentGroupForGender();
         }
 
-        private void theoKhoaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void theoLớpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fReport fReport = new fReport();
             fReport.Show();
-            fReport.showSubjectGroupForDepartment();
+            fReport.showStudentGroupForClass();
         }
     }
 }

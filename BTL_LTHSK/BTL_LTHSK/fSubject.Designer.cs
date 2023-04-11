@@ -32,6 +32,8 @@
             this.cbDepartment = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.rdFourCredits = new System.Windows.Forms.RadioButton();
+            this.rdThreeCredits = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbSubjectName = new System.Windows.Forms.TextBox();
@@ -43,6 +45,8 @@
             this.báoCáoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.báoCáoĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.báoCáoThốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.theoSốTínChỉToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.theoKhoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -50,8 +54,6 @@
             this.btnChange = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvSubject = new System.Windows.Forms.DataGridView();
-            this.rdFourCredits = new System.Windows.Forms.RadioButton();
-            this.rdThreeCredits = new System.Windows.Forms.RadioButton();
             this.sMaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sTenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sMaKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,6 +103,30 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(570, 66);
             this.panel3.TabIndex = 8;
+            // 
+            // rdFourCredits
+            // 
+            this.rdFourCredits.AutoSize = true;
+            this.rdFourCredits.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdFourCredits.Location = new System.Drawing.Point(251, 21);
+            this.rdFourCredits.Name = "rdFourCredits";
+            this.rdFourCredits.Size = new System.Drawing.Size(62, 24);
+            this.rdFourCredits.TabIndex = 3;
+            this.rdFourCredits.Text = "4 tín";
+            this.rdFourCredits.UseVisualStyleBackColor = true;
+            // 
+            // rdThreeCredits
+            // 
+            this.rdThreeCredits.AutoSize = true;
+            this.rdThreeCredits.Checked = true;
+            this.rdThreeCredits.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdThreeCredits.Location = new System.Drawing.Point(173, 20);
+            this.rdThreeCredits.Name = "rdThreeCredits";
+            this.rdThreeCredits.Size = new System.Drawing.Size(62, 24);
+            this.rdThreeCredits.TabIndex = 3;
+            this.rdThreeCredits.TabStop = true;
+            this.rdThreeCredits.Text = "3 tín";
+            this.rdThreeCredits.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -183,20 +209,38 @@
             this.báoCáoĐơnToolStripMenuItem,
             this.báoCáoThốngKêToolStripMenuItem});
             this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
-            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(77, 26);
+            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
             this.báoCáoToolStripMenuItem.Text = "Báo cáo";
             // 
             // báoCáoĐơnToolStripMenuItem
             // 
             this.báoCáoĐơnToolStripMenuItem.Name = "báoCáoĐơnToolStripMenuItem";
-            this.báoCáoĐơnToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.báoCáoĐơnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.báoCáoĐơnToolStripMenuItem.Text = "Báo cáo chi tiết";
+            this.báoCáoĐơnToolStripMenuItem.Click += new System.EventHandler(this.báoCáoĐơnToolStripMenuItem_Click);
             // 
             // báoCáoThốngKêToolStripMenuItem
             // 
+            this.báoCáoThốngKêToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.theoSốTínChỉToolStripMenuItem,
+            this.theoKhoaToolStripMenuItem});
             this.báoCáoThốngKêToolStripMenuItem.Name = "báoCáoThốngKêToolStripMenuItem";
-            this.báoCáoThốngKêToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.báoCáoThốngKêToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.báoCáoThốngKêToolStripMenuItem.Text = "Báo cáo thống kê";
+            // 
+            // theoSốTínChỉToolStripMenuItem
+            // 
+            this.theoSốTínChỉToolStripMenuItem.Name = "theoSốTínChỉToolStripMenuItem";
+            this.theoSốTínChỉToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.theoSốTínChỉToolStripMenuItem.Text = "Theo số tín chỉ";
+            this.theoSốTínChỉToolStripMenuItem.Click += new System.EventHandler(this.theoSốTínChỉToolStripMenuItem_Click);
+            // 
+            // theoKhoaToolStripMenuItem
+            // 
+            this.theoKhoaToolStripMenuItem.Name = "theoKhoaToolStripMenuItem";
+            this.theoKhoaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.theoKhoaToolStripMenuItem.Text = "Theo khoa";
+            this.theoKhoaToolStripMenuItem.Click += new System.EventHandler(this.theoKhoaToolStripMenuItem_Click);
             // 
             // panel5
             // 
@@ -276,30 +320,6 @@
             this.dgvSubject.Size = new System.Drawing.Size(800, 263);
             this.dgvSubject.TabIndex = 11;
             this.dgvSubject.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSubject_CellClick);
-            // 
-            // rdFourCredits
-            // 
-            this.rdFourCredits.AutoSize = true;
-            this.rdFourCredits.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdFourCredits.Location = new System.Drawing.Point(251, 21);
-            this.rdFourCredits.Name = "rdFourCredits";
-            this.rdFourCredits.Size = new System.Drawing.Size(62, 24);
-            this.rdFourCredits.TabIndex = 3;
-            this.rdFourCredits.Text = "4 tín";
-            this.rdFourCredits.UseVisualStyleBackColor = true;
-            // 
-            // rdThreeCredits
-            // 
-            this.rdThreeCredits.AutoSize = true;
-            this.rdThreeCredits.Checked = true;
-            this.rdThreeCredits.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdThreeCredits.Location = new System.Drawing.Point(173, 20);
-            this.rdThreeCredits.Name = "rdThreeCredits";
-            this.rdThreeCredits.Size = new System.Drawing.Size(62, 24);
-            this.rdThreeCredits.TabIndex = 3;
-            this.rdThreeCredits.TabStop = true;
-            this.rdThreeCredits.Text = "3 tín";
-            this.rdThreeCredits.UseVisualStyleBackColor = true;
             // 
             // sMaMon
             // 
@@ -392,5 +412,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sTenMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn sMaKhoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn iSoTC;
+        private System.Windows.Forms.ToolStripMenuItem theoSốTínChỉToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem theoKhoaToolStripMenuItem;
     }
 }

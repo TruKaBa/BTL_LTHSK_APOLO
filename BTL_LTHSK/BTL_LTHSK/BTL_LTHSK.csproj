@@ -77,6 +77,18 @@
     <Compile Include="fReport.Designer.cs">
       <DependentUpon>fReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="fStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fStudent.Designer.cs">
+      <DependentUpon>fStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fStudyResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fStudyResult.Designer.cs">
+      <DependentUpon>fStudyResult.cs</DependentUpon>
+    </Compile>
     <Compile Include="fSubject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +123,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QUANLYGIANGDAYDataSet3.xsd</DependentUpon>
     </Compile>
+    <Compile Include="QUANLYGIANGDAYDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUANLYGIANGDAYDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QUANLYGIANGDAYDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUANLYGIANGDAYDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QUANLYGIANGDAYDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUANLYGIANGDAYDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QUANLYGIANGDAYDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUANLYGIANGDAYDataSet7.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\fClassReports\DetailReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -122,6 +154,42 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GroupReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\fStudentReports\StudentDetail.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentDetail.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\fStudentReports\StudentGroupForClass.cs">
+      <DependentUpon>StudentGroupForClass.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\fStudentReports\StudentGroupForGender.cs">
+      <DependentUpon>StudentGroupForGender.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\fSubjectReports\SubjectDetail.cs">
+      <DependentUpon>SubjectDetail.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\fSubjectReports\SubjectGroupForCredits.cs">
+      <DependentUpon>SubjectGroupForCredits.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\fSubjectReports\SubjectGroupForDepartment.cs">
+      <DependentUpon>SubjectGroupForDepartment.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Reports\fTeacherReports\TeacherDetail.cs">
       <AutoGen>True</AutoGen>
@@ -153,6 +221,12 @@
     <EmbeddedResource Include="fReport.resx">
       <DependentUpon>fReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fStudent.resx">
+      <DependentUpon>fStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fStudyResult.resx">
+      <DependentUpon>fStudyResult.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fSubject.resx">
       <DependentUpon>fSubject.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +249,30 @@
     <EmbeddedResource Include="Reports\fClassReports\GroupReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>GroupReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\fStudentReports\StudentDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StudentDetail.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\fStudentReports\StudentGroupForClass.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StudentGroupForClass.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\fStudentReports\StudentGroupForGender.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StudentGroupForGender.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\fSubjectReports\SubjectDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SubjectDetail.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\fSubjectReports\SubjectGroupForCredits.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SubjectGroupForCredits.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\fSubjectReports\SubjectGroupForDepartment.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SubjectGroupForDepartment.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\fTeacherReports\TeacherDetail.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -240,6 +338,50 @@
     </None>
     <None Include="QUANLYGIANGDAYDataSet3.xss">
       <DependentUpon>QUANLYGIANGDAYDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet4.xsc">
+      <DependentUpon>QUANLYGIANGDAYDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QUANLYGIANGDAYDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet4.xss">
+      <DependentUpon>QUANLYGIANGDAYDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet5.xsc">
+      <DependentUpon>QUANLYGIANGDAYDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QUANLYGIANGDAYDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet5.xss">
+      <DependentUpon>QUANLYGIANGDAYDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet6.xsc">
+      <DependentUpon>QUANLYGIANGDAYDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QUANLYGIANGDAYDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet6.xss">
+      <DependentUpon>QUANLYGIANGDAYDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet7.xsc">
+      <DependentUpon>QUANLYGIANGDAYDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QUANLYGIANGDAYDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet7.xss">
+      <DependentUpon>QUANLYGIANGDAYDataSet7.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
