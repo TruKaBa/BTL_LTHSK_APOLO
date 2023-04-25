@@ -387,5 +387,44 @@ namespace BTL_LTHSK
             }
             loadDataToGridView(filter);
         }
+
+        private void báoCáoĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string subjectId = tbSubjectID.Text;
+                if (isSubjectIDExist(subjectId))
+                {
+                    fReport report = new fReport();
+                    report.Show();
+                    report.showSubjectDetail(subjectId);
+
+                }
+                else
+                {
+                    MessageBox.Show("Không tồn tại môn học!", "Thông báo");
+                    clearInputControl();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void theoSốTínChỉToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fReport fReport = new fReport();
+            fReport.Show();
+            fReport.showSubjectGroupForCredits();
+        }
+
+        private void theoKhoaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fReport fReport = new fReport();
+            fReport.Show();
+            fReport.showSubjectGroupForDepartment();
+        }
     }
 }

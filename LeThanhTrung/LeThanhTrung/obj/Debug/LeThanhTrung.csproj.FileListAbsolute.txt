@@ -1,0 +1,11 @@
+C:\Users\MY LAPTOP\Documents\BTL_LTHSK_APOLO\BTL_LTHSK_APOLO\LeThanhTrung\LeThanhTrung\bin\Debug\LeThanhTrung.exe.config
+C:\Users\MY LAPTOP\Documents\BTL_LTHSK_APOLO\BTL_LTHSK_APOLO\LeThanhTrung\LeThanhTrung\bin\Debug\LeThanhTrung.exe
+C:\Users\MY LAPTOP\Documents\BTL_LTHSK_APOLO\BTL_LTHSK_APOLO\LeThanhTrung\LeThanhTrung\bin\Debug\LeThanhTrung.pdb
+C:\Users\MY LAPTOP\Documents\BTL_LTHSK_APOLO\BTL_LTHSK_APOLO\LeThanhTrung\LeThanhTrung\obj\Debug\LeThanhTrung.csproj.AssemblyReference.cache
+C:\Users\MY LAPTOP\Documents\BTL_LTHSK_APOLO\BTL_LTHSK_APOLO\LeThanhTrung\LeThanhTrung\obj\Debug\LeThanhTrung.csproj.SuggestedBindingRedirects.cache
+C:\Users\MY LAPTOP\Documents\BTL_LTHSK_APOLO\BTL_LTHSK_APOLO\LeThanhTrung\LeThanhTrung\obj\Debug\LeThanhTrung.Form1.resources
+C:\Users\MY LAPTOP\Documents\BTL_LTHSK_APOLO\BTL_LTHSK_APOLO\LeThanhTrung\LeThanhTrung\obj\Debug\LeThanhTrung.Properties.Resources.resources
+C:\Users\MY LAPTOP\Documents\BTL_LTHSK_APOLO\BTL_LTHSK_APOLO\LeThanhTrung\LeThanhTrung\obj\Debug\LeThanhTrung.csproj.GenerateResource.cache
+C:\Users\MY LAPTOP\Documents\BTL_LTHSK_APOLO\BTL_LTHSK_APOLO\LeThanhTrung\LeThanhTrung\obj\Debug\LeThanhTrung.csproj.CoreCompileInputs.cache
+C:\Users\MY LAPTOP\Documents\BTL_LTHSK_APOLO\BTL_LTHSK_APOLO\LeThanhTrung\LeThanhTrung\obj\Debug\LeThanhTrung.exe
+C:\Users\MY LAPTOP\Documents\BTL_LTHSK_APOLO\BTL_LTHSK_APOLO\LeThanhTrung\LeThanhTrung\obj\Debug\LeThanhTrung.pdb

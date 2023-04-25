@@ -37,5 +37,29 @@ namespace BTL_LTHSK
             fTeacher.ShowDialog();
             this.Show();
         }
+
+        private void kếtQuảHọcTậpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fStudyResult fStudyResult = new fStudyResult();
+            this.Hide();
+            fStudyResult.ShowDialog();
+            this.Show();
+        }
+
+        private void sinhViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fStudent fStudent = new fStudent();
+            this.Hide();
+            fStudent.ShowDialog();
+            this.Show();
+        }
+
+        private void mônHọcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fSubject fSubject = new fSubject();
+            this.Hide();
+            fSubject.ShowDialog();
+            this.Show();
+        }
     }
 }
